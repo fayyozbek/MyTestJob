@@ -54,16 +54,29 @@ class MyController extends Controller
         return view('login');
     }
     public function manager(){
+        if (session()->has('user_id')){
+        $manager=User::find(session()->get('user_id'));
+        if ($manager->role!=2){
         $forms=Form::all();
         $users=User::all();
-        return view('managersPanel', compact('forms', $forms), compact('users', $users));
+        return view('managersPanel', compact('forms', $forms), compact('users', $users), compact('manager', $manager));}
+        else return redirect()->route('home');}
+        else return redirect()->route('home');
+
     }
     public function sign(){
         return view('sign');
     }
     public function user(Request $request){
-      //////////////// dump($request->session()->get('user_id'));
-        return view('user');
+        if (session()->has('user_id'))   {
+            $manager=User::find(session()->get('user_id'));
+            if ($manager->role==2)
+                 return view('user');
+            else
+                 return redirect()->route('home');
+        }
+        else return redirect()->route('home');
+
     }
     public function register(Request $request){
         $valid = $request->validate([

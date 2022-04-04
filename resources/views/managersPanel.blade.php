@@ -3,7 +3,8 @@
     Manager's panel
 @endsection
 @section('main_section')
-    @if(session()->has('user_id'))
+    @if(session()->has('user_id') )
+
     <div class="container">
         <div class="row">
 
@@ -126,6 +127,8 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+
     @else
         <div>
             please <a href="{{url('/')}}/login"> login</a>
