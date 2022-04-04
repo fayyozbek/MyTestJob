@@ -62,7 +62,7 @@ class MyController extends Controller
         return view('sign');
     }
     public function user(Request $request){
-       dump($request->session()->get('user_id'));
+      //////////////// dump($request->session()->get('user_id'));
         return view('user');
     }
     public function register(Request $request){
@@ -143,7 +143,7 @@ class MyController extends Controller
 
         if($valid){
             $logins=User::all();
-            dump($logins);
+           // dump($logins);
             foreach ($logins as $login){
                 if ($login->login===$request['login']){
                     if ($login->password===$request['password']){
