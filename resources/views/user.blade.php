@@ -51,8 +51,8 @@
             </div>
         @endif
         @if(session()->get('timer'))
-            <div>
-                NO MORE REQUESTS
+            <div class = 'alert alert-danger'>
+            NO MORE REQUESTS
             </div>
         @endif
 
